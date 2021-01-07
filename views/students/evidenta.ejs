@@ -1,0 +1,62 @@
+<%- include('../initial/header.ejs') %>
+    <div class="container">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-pills w-100">
+                                    <li class="nav-item active">
+                                        <a class="nav-link">Evidenta</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <%=data.length  %> 
+                                <% if(data.length) { %>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Nume</th>
+                                                <th scope="col">Prenume</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Grupa</th>
+                                                <th scope="col">Proiect</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=0; i< data.length; i++) { %>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <%= (i+1) %>
+                                                    </th>
+                                                    <td>
+                                                        <%= data[i].nume%>
+                                                    </td>
+                                                    <td>
+                                                        <%= data[i].prenume%>
+                                                    </td>
+                                                    <td>
+                                                        <%= data[i].email%>
+                                                    </td>
+                                                    <td>
+                                                        <%= data[i].grupa%>
+                                                    </td>
+                                                    <td>
+                                                        <%= data[i].denumire%>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                    <% } %>
+
+                                        <!-- if result is empty -->
+                                        <% if(!data.length) { %>
+                                            <p class="text-center">Nu a fost gasit niciun student!</p>
+                                            <% } %>
+
+                            </div>
+                        </div>
+
+</div>
+<%- include('../initial/footer.ejs') %>

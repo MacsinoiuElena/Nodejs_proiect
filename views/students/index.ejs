@@ -1,0 +1,81 @@
+<%- include('../initial/header.ejs') %>
+    <div class="container">
+
+        <% if (messages.success) { %>
+            <div class="alert alert-success" role="alert">
+                <%- messages.success %>
+            </div>
+            <% } %>
+
+                <% if (messages.error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%- messages.error %>
+                    </div>
+                    <% } %>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-pills w-100">
+                                    <li class="nav-item active">
+                                        <a class="nav-link">Studenti</a>
+                                    </li>
+                                    <li class="nav-item ml-auto">
+                                        <a class="nav-link active" href="/students/addStud">Adauga Student</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+
+                                <% if(data.length) { %>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Nume</th>
+                                                <th scope="col">Prenume</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Grupa</th>
+                                                <th width="200px">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=0; i< data.length; i++) { %>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <%= (i+1) %>
+                                                    </th>
+                                                    <td>
+                                                        <%= data[i].nume%>
+                                                    </td>
+                                                    <td>
+                                                        <%= data[i].prenume%>
+                                                    </td>
+                                                    <td>
+                                                        <%= data[i].email%>
+                                                    </td>
+                                                    <td>
+                                                        <%= data[i].grupa%>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-success"
+                                                            href="../students/editStud/<%=data[i].id%>">Modifica</a>
+                                                        <a class="btn btn-danger"
+                                                            onclick="return alert('Are You sure?')"
+                                                            href="../students/deleteStud/<%=data[i].id%>">Sterge</a>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                    <% } %>
+
+                                        <!-- if result is empty -->
+                                        <% if(!data.length) { %>
+                                            <p class="text-center">Nu a fost gasit niciun student!</p>
+                                            <% } %>
+
+                            </div>
+                        </div>
+
+</div>
+<%- include('../initial/footer.ejs') %>
