@@ -29,7 +29,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Denumire</th>
                     <th scope="col">Descriere</th>
-                    <th width="200px">Action</th>
+                    <th scope="col" width="200px">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +40,7 @@
                     <td><%= data[i].descriere%></td>
                     <td>
                         <a class="btn btn-success" href="../projects/editProj/<%=data[i].id%>">Modifica</a>                       
-                        <a class="btn btn-danger" onclick="return alert('Are You sure?')" href="../projects/deleteProj">Sterge</a>                       
+                        <a class="btn btn-danger" onclick="return alert('Are You sure?')" href="/projects/deleteProj/<%= data[i].id %> ">Sterge</a>                       
                     </td>
                 </tr>
             <% } %>

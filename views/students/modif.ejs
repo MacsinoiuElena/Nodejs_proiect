@@ -1,0 +1,23 @@
+<%- include('../initial/header.ejs') %>
+<% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert">
+        <%- messages.error %>
+    </div>
+    <% } %>
+<div class="container">
+    <div class="row">
+    <div class = "col-md-6 mx-auto">
+            <div class = "card card-body bg-light mt-5">
+                <h2>Nota</h2>
+                <form action="/evidenta/note/<%= idStud  %>/<%= idProiect %>" method="post">
+                    <div class="form-group">
+                        <label for="nota">Nota:</label><br>
+                            <input type="number"  name="nota" class="form-control form-control-lg " value="<%= nota %> "/>
+                    </div>
+                        <input type="submit" value = "Noteaza" class="btn btn-success">
+            </form>
+            </div>
+        </div>
+    </div>
+    </div>
+<%- include('../initial/footer.ejs') %>

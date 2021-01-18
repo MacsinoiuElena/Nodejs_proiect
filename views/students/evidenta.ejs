@@ -24,27 +24,42 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            
                                             <% for(var i=0; i< data.length; i++) { %>
+                                                <% elem = data[i] %>
+                                             
                                                 <tr>
                                                     <th scope="row">
                                                         <%= (i+1) %>
                                                     </th>
                                                     <td>
-                                                        <%= data[i].nume%>
+                                                        <%= elem.nume%>
                                                     </td>
                                                     <td>
-                                                        <%= data[i].prenume%>
+                                                        <%= elem.prenume%>
                                                     </td>
                                                     <td>
-                                                        <%= data[i].email%>
+                                                        <%= elem.email%>
                                                     </td>
                                                     <td>
-                                                        <%= data[i].grupa%>
+                                                        <%= elem.grupa%>
                                                     </td>
                                                     <td>
-                                                        <%= data[i].denumire%>
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                              Proiecte
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                              <% for(var j = 0; j < elem.denumire.length; j++) {%> 
+                                                                <a class="dropdown-item" href="/evidenta/note/<%= elem.id %>/<%= elem.idProiecte[j] %> "><%=  elem.denumire[j] %></a>
+                                                                <a class="dropdown-item" href="#">Nota pentru <%= elem.denumire[j]  %>: <%= elem.nota[j] %>  </a>
+                                                               <% } %> 
+                                                              
+                                                            </div>
+                                                          </div>
                                                     </td>
                                                 </tr>
+                                              
                                                 <% } %>
                                         </tbody>
                                     </table>

@@ -1,0 +1,33 @@
+<%- include('../initial/header.ejs') %>
+    <div class="container">
+
+        <% if (messages.error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%- messages.error %>
+            </div>
+            <% } %>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/evidenta/delProj/<%= id %>" method="post">
+                            
+                            <div class="form-group">
+                            <label>Proiect:</label>
+                                <% let i = 0 %> 
+                                <% for (proiect of data) { %>
+                                    
+                                    <div class="custom-control">
+                                        <input type="checkbox" name='checkboxvar' value='<%= proiect.denumire %> ' id="<%= 'den'+i %> ">
+                                        <label   for="<%= 'den'+i %>"><%= proiect.denumire %> </label><br>
+                                    </div>
+                                <% i++; }%>
+                        
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-info" value="Adauga" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+    </div>
+    <%- include('../initial/footer.ejs') %>

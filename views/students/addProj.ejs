@@ -1,0 +1,32 @@
+<%- include('../initial/header.ejs') %>
+    <div class="container">
+
+        <% if (messages.error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%- messages.error %>
+            </div>
+            <% } %>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/evidenta/addProj/<%= id %>" method="post">
+                            
+                            <div class="form-group">
+                            <label for name = "denumire">Proiect:</label>
+                            <select name="denumire" id="proiect" class = "form-control">
+                                
+                                <% for (proiect of data) { %>
+                                    
+                                    <option value = "<%= proiect.denumire %>"><%= proiect.denumire %></option>
+                                    
+                                <%}%>
+                            </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-info" value="Adauga" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+    </div>
+    <%- include('../initial/footer.ejs') %>

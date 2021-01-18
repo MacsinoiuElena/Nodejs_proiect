@@ -10,9 +10,10 @@ var mysql = require('mysql');
 var connection  = require('./lib/db');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var projRouter = require('./routes/projects');
 var studRouter = require('./routes/students');
+var evidRouter = require('./routes/evidenta');
+
 
 var app = express();
 
@@ -37,9 +38,9 @@ app.use(session({
 app.use(flash());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/students', studRouter);
 app.use('/projects', projRouter);
+app.use('/evidenta', evidRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
