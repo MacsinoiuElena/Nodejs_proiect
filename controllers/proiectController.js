@@ -113,15 +113,11 @@ exports.modifyProject = (req, res, next) => {
             descriere: descriere
         })
     }else{
-        errors = true;
+        // errors = true;
         var form_data = {
             denumire: denumire,
             descriere: descriere
         }
-        proiectDAO.checkForTitle(denumire, form_data)
-        .then(() => {
-            errors = false;
-
             proiectDAO.updateProiect(form_data, id)
             .then(() => {
                 req.flash('success', 'Project successfully updated');
@@ -140,18 +136,8 @@ exports.modifyProject = (req, res, next) => {
                     })
                 }
             })
-        }).catch((err) => {
-            req.flash('error', 'Title already exist')
-                 
-                // render to add.ejs
-            res.render('projects/editProj', {
-                id: req.params.id,
-                denumire: form_data.denumire,
-                descriere: form_data.descriere                    
-            })
-        })
+        }
     }
-}
 
 exports.deleteProject = (req, res, next) => {
     let id = req.params.id;
