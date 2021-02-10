@@ -18,6 +18,19 @@ exports.selectByDenumire = (denumire, data) => {
     })
 }
 
+exports.checkForTitle = (titlu,data) =>{
+    return new Promise((resolve, reject) => {
+        dbCon.query('SELECT * FROM proiect WHERE denumire = ?', titlu, function(err, row){
+            if(err) throw err;
+
+            if (row.length === 0){
+                resolve(true)
+            }else{
+                reject(err, data)
+            }
+        })
+    })
+}
 
 exports.insertProiect = (data) => sqlResult.insertInto('proiect', data);
 
